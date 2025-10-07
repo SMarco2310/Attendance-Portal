@@ -1,3 +1,13 @@
+
+
+
+
+
+
+
+
+//  Password validation function
+
 function validatePassword(){
     let password = document.forms["signup-form"]["pass-field"].value;
     let cue = document.getElementById("password-cue");
