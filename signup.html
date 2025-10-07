@@ -16,9 +16,11 @@
     <title>Index</title>
 </head>
 <body>
+    <script src="script.js" defer async></script>
+
     <div class="login-container">
         <div class="left-side">
-            <a href="index.html"><img src="ashesilogo.JPG" alt="ashesi-logo"></a>
+            <a href="index.html"><img src="resources/ashesilogo.JPG" alt="ashesi-logo"></a>
             <h1 style="margin: 0;">ATTENDANCE MADE EASY</h1>
             <p style="margin: 0;">A simple and reliable system to track, record, and manage attendance efficiently</p>
         </div>
@@ -35,7 +37,7 @@
 
                 <label for="email-field">
                     <p>Email</p>
-                    <input type="email" name="mail-field" id="email-field" placeholder="Enter your Email" aria-required="true" required>
+                    <input type="email" name="mail-field" id="email-field" placeholder="Enter your email" aria-required="true" required>
                 </label>
 
                 <label for="password-field">
@@ -43,7 +45,9 @@
                     <input type="password" name="pass-field" id="password-field" placeholder="********" aria-required="true" required>
                 </label>
 
-                <label for="role-selector">
+                <p id="password-cue"></p>
+
+                <label for="role-field">
                     <p>Role</p>
                     <select name="role" id="role-field">
                         <option value=""></option>
@@ -60,7 +64,5 @@
             </form>
         </div>
     </div>
-
-    <script src="script.js" defer async></script>
 </body>
 </html>
