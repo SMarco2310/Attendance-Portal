@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+    <title>Index</title>
+</head>
+<body>
+    <script src="script.js" defer async></script>
+
+    <div class="login-container">
+        <div class="left-side">
+            <a href="index.html"><img src="ashesilogo.JPG" alt="ashesi-logo"></a>
+            <h1 style="margin: 0;">ATTENDANCE MADE EASY</h1>
+            <p style="margin: 0;">A simple and reliable system to track, record, and manage attendance efficiently</p>
+        </div>
+
+        <div class="right-side">
+            <h2>WELCOME BACK!</h2>
+            <p>Log into your account</p>
+
+            <form name="signup-form" action="dashboard.html" onsubmit="return validatePassword()">
+                <label for="email-field">
+                    <p>Email</p>
+                    <input type="email" name="mail-field" id="email-field" placeholder="Enter your email" aria-required="true" required>
+                </label>
+
+                <label for="password-field">
+                    <p>Password</p>
+                    <input type="password" name="pass-field" id="password-field" placeholder="********" aria-required="true" required>
+                </label>
+
+                <p id="password-cue"></p>
+
+                <label for="submit-btn">
+                    <input type="submit" value="Login" id="submit-btn">
+                </label>
+
+                <p>Don't have an account? <a href="signup.html">Sign up</a></p>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
