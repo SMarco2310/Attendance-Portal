@@ -1,0 +1,62 @@
+#navbar{
+    width: 300px;
+    justify-content: space-between;
+}
+
+#navbar-logo{
+    left: 30px;
+}
+
+#navbar-text{
+    position: absolute;
+    top: 40px;
+    left: 110px;
+    font-size: 12px;
+}
+
+#navbar-text-below{
+    position: absolute;
+    top: 60px;
+    left: 110px;
+    font-size: 12px;
+}
+
+nav a{
+    color: whitesmoke;
+    text-decoration: none;
+}
+
+hr{color: whitesmoke; background-color: whitesmoke;}
+
+.searchbar-icons{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.icons img{
+    width: 25px;
+}
+
+.icons{
+    margin: auto 0;
+}
+
+.students-and-selectors{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.students{
+    /* text-align: left; */
+}
+
+.selectors{
+    display: flex;
+    gap: 10px;
+}
+
+.selectors select, .selectors button{
+    width: 200px;
+}

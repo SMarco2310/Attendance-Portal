@@ -13,15 +13,69 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="dash.css">
     <title>Dashboard</title>
 </head>
 <body>
     <div class="login-container">
-        <div class="left-side">
-            <a href="index.html"><img src="resources/ashesilogo.JPG" alt="ashesi-logo"></a>
-            <h1>ATTENDANCE MANAGER</h1>
-            <h3 style="margin: 0;">COMING SOON...</h3>
+        <div class="left-side" id="navbar">
+            <div>
+                <a href="index.html"><img id="navbar-logo" src="resources/ashesilogo.JPG" alt="ashesi-logo"></a>
+                <h4 id="navbar-text">ATTENDANCE</h4>
+                <h4 id="navbar-text-below">MANAGER</h4>
+            </div>
+
+            <nav>
+                <a href=""><option value="green">green</option></a>
+                <hr>
+                <a href=""><option value="green">green</option></a>
+                <hr>
+                <a href=""><option value="green">green</option></a>
+                <hr>
+                <a href=""><option value="green">green</option></a>
+            </nav>
+
+            <div style="height: 7%;">
+                <a style="color: whitesmoke;" href="#">Help</a>
+            </div>
         </div>
+
+        <div class="right-side">
+            <!--* Search bar and icons div -->
+            <div class="searchbar-icons">
+                <div class="searchbar-div">
+                    <form action="#">
+                        <input type="search" name="search" id="search-input" placeholder="🔎 Search">
+                    </form>
+                </div>
+
+                <div class="icons">
+                    <img src="resources/notibell.png" alt="notification-bell">
+                    <img src="resources/user.png" alt="user-icon">
+                </div>
+            </div>
+
+            <!--* Selectors div -->
+            <div class="students-and-selectors">
+                <div class="students">
+                    <h2>Students</h2>
+                </div>
+
+                <div class="selectors">
+                    <label for="course-field">
+                        <select name="course" id="course-field">
+                            <option value="">Course</option>
+                        </select>
+                    </label>
+
+                    <button>+ Add Student</button>
+                </div>
+            </div>
+
+            <!--* Main dash div -->
+            <div class="main-dash">
+
+            </div>
         </div>
     </div>
 </body>
