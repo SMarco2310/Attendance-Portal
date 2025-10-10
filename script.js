@@ -76,72 +76,95 @@ function validatePassword(){
     }
 }
 
-// Fetch students
+
 
 async function fetchStudents(){
     try {
-        const response = await fetch("http://169.239.251.102:341/~marc.sossou/api/students.json");
+        console.log("Fetching students from API...");
+        const response = await fetch("http://localhost:3000/students");
+        console.log("Response status:", response.status);
         if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
-        const students = await response.json();
-        return students.students;
+        const data = await response.json();
+        console.log("Raw data received:", data);
+        return data.students;
     } catch (error) {
         console.error("Error fetching students:", error);
+        console.error("Error details:", error.message);
+        console.error("Make sure the proxy server is running: node proxy-server.js");
         return [];
     }
 }
 
-// Fetch courses
+
 
 async function fetchCourses(){
     try {
-        const response = await fetch("http://169.239.251.102:341/~marc.sossou/api/courses.json");
+        console.log("Fetching courses from API...");
+        const response = await fetch("http://localhost:3000/courses");
+        console.log("Courses response status:", response.status);
         if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
-        const courses = await response.json()
-        return courses.courses;
+        const data = await response.json();
+        console.log("Courses data received:", data);
+        return data.courses;
     }
     catch (error) {
         console.error("Error fetching courses:", error);
+        console.error("Error details:", error.message);
+        console.error("Make sure the proxy server is running: node proxy-server.js");
         return [];
     }
 }
 
 
-fetchStudents().then(console.log)
-
-
-// Fetch Sessions
 
 async function fetchSessions(){
-    // to avoid the non defined promise error when fetching sessions
+    
     try {
-        const response = await fetch("http://169.239.251.102:341/~marc.sossou/api/sessions.json");
+        console.log("Fetching sessions from API...");
+        const response = await fetch("http://localhost:3000/sessions");
+        console.log("Sessions response status:", response.status);
         if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
-        const sessions = await response.json()
-        return sessions.sessions;
+        const data = await response.json();
+        console.log("Sessions data received:", data);
+        return data.sessions;
     }
     catch (error) {
         console.error("Error fetching sessions:", error);
+        console.error("Error details:", error.message);
+        console.error("Make sure the proxy server is running: node proxy-server.js");
         return [];
     }
 }
 
 
 
-//  create students table
 
-document.addEventListener("DOMContentLoaded", function() {
+
+if (document.readyState === 'loading') {
+    document.addEventListener("DOMContentLoaded", createStudentsTable);
+} else {
     createStudentsTable();
-  });
+}
 
 
 async function createStudentsTable(){
     const table = document.getElementById("students");
+    if (!table) {
+        console.error("Table element not found");
+        return;
+    }
+
     try {
         const students = await fetchStudents();
-        console.log(students)
-        const rowsHtml = students.map(student  => {
+        console.log("Fetched students:", students);
 
-        return `
+        if (!students || students.length === 0) {
+            table.innerHTML = `<tr><td colspan="4">No students found.</td></tr>`;
+            return;
+        }
+
+        const rowsHtml = students.map(student  => {
+            return `
                 <tr>
                     <td>${student.fullName}</td>
                     <td>${student.studentId}</td>
@@ -157,9 +180,9 @@ async function createStudentsTable(){
         table.innerHTML = rowsHtml;
     } catch (error) {
         console.error("Failed to fetch or create students table:", error);
-        tableBody.innerHTML = `<tr><td colspan="4">Error loading data.</td></tr>`;
+        table.innerHTML = `<tr><td colspan="4">Error loading data: ${error.message}</td></tr>`;
     }
-    };
+};
 
 
 
