@@ -81,8 +81,9 @@ function validatePassword(){
 async function fetchStudents(){
     try {
         const response = await fetch("http://169.239.251.102:341/~marc.sossou/api/students.json");
+        if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
         const students = await response.json();
-        return students;
+        return students.students;
     } catch (error) {
         console.error("Error fetching students:", error);
         return [];
@@ -94,8 +95,9 @@ async function fetchStudents(){
 async function fetchCourses(){
     try {
         const response = await fetch("http://169.239.251.102:341/~marc.sossou/api/courses.json");
+        if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
         const courses = await response.json()
-        return courses;
+        return courses.courses;
     }
     catch (error) {
         console.error("Error fetching courses:", error);
@@ -104,18 +106,60 @@ async function fetchCourses(){
 }
 
 
+fetchStudents().then(console.log)
+
+
 // Fetch Sessions
 
 async function fetchSessions(){
+    // to avoid the non defined promise error when fetching sessions
     try {
         const response = await fetch("http://169.239.251.102:341/~marc.sossou/api/sessions.json");
+        if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
         const sessions = await response.json()
-        return sessions;
+        return sessions.sessions;
     }
     catch (error) {
         console.error("Error fetching sessions:", error);
         return [];
     }
 }
+
+
+
+//  create students table
+
+document.addEventListener("DOMContentLoaded", function() {
+    createStudentsTable();
+  });
+
+
+async function createStudentsTable(){
+    const table = document.getElementById("students");
+    try {
+        const students = await fetchStudents();
+        console.log(students)
+        const rowsHtml = students.map(student  => {
+
+        return `
+                <tr>
+                    <td>${student.fullName}</td>
+                    <td>${student.studentId}</td>
+                    <td>${student.major}</td>
+                    <td>
+                        <input type="range" name="attendance" min="0" max="100" value="${student.attendance}">
+                        <span>${student.attendance}%</span>
+                    </td>
+                </tr>
+            `;
+        }).join('');
+
+        table.innerHTML = rowsHtml;
+    } catch (error) {
+        console.error("Failed to fetch or create students table:", error);
+        tableBody.innerHTML = `<tr><td colspan="4">Error loading data.</td></tr>`;
+    }
+    };
+
 
 

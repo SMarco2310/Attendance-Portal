@@ -6,6 +6,35 @@
 body{
     background-color: #282828;
 }
+/* this is the table style */
+
+table{
+    width: 100%;
+    border: 1px solid #abaaa9;
+    border-collapse: collapse;
+    border-spacing: 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    overflow: hidden;
+
+}
+
+table th{
+    background-color: #f8f9fa;
+    color: #6c757d;           
+    padding: 15px;             
+    text-align: left;          
+    font-weight: normal;      
+    font-family: sans-serif;
+
+}
+
+table td{
+    background-color: whitesmoke;
+    color: #333; 
+    padding: 15px;
+    border-top: 1px solid #dee2e6;
+}
 
 .login-container{
     display: flex;
