@@ -85,3 +85,47 @@ function validatePassword(){
         }
     }
 }
+
+// Fetch students
+
+async function fetchStudents(){
+    try {
+        const response = await fetch("http://169.239.251.102:341/~marc.sossou/api/students.json");
+        const students = await response.json();
+        return students;
+    } catch (error) {
+        console.error("Error fetching students:", error);
+        return [];
+    }
+}
+
+// Fetch courses
+
+async function fetchCourses(){
+    try {
+        const response = await fetch("http://169.239.251.102:341/~marc.sossou/api/courses.json");
+        const courses = await response.json()
+        return courses;
+    }
+    catch (error) {
+        console.error("Error fetching courses:", error);
+        return [];
+    }
+}
+
+
+// Fetch Sessions
+
+async function fetchSessions(){
+    try {
+        const response = await fetch("http://169.239.251.102:341/~marc.sossou/api/sessions.json");
+        const sessions = await response.json()
+        return sessions;
+    }
+    catch (error) {
+        console.error("Error fetching sessions:", error);
+        return [];
+    }
+}
+
+
