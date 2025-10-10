@@ -3,6 +3,12 @@
     justify-content: space-between;
 }
 
+nav{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 #navbar-logo{
     left: 30px;
 }
@@ -59,4 +65,52 @@ hr{color: whitesmoke; background-color: whitesmoke;}
 
 .selectors select, .selectors button{
     width: 200px;
+}
+
+.main-dash{
+    display: flex;
+    gap: 20px;
+    height: 100%;
+    width: 100%;
+}
+
+#left-dash{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+}
+
+.student-pill{
+    border: 1px solid yellow;
+    background-color: cadetblue;
+    width: 100%;
+    height: 10%;
+    border-radius:5px ;
+}
+
+#right-dash{
+    background-color: aqua;
+    width: 40%;
+    gap: 20px;
+}
+
+.right-side-box{
+    background-color: wheat;
+    outline: 1px solid green;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.top-side{
+    display: flex;
+    justify-content: space-between;
+}
+
+.top-side select{
+    width: 120px;
+    height: 30px;
 }
