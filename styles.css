@@ -22,7 +22,7 @@ table{
 table th{
     background-color: #f8f9fa;
     color: #6c757d;           
-    padding: 15px;             
+    padding: 10px;             
     text-align: left;          
     font-weight: normal;      
     font-family: sans-serif;
@@ -32,7 +32,7 @@ table th{
 table td{
     background-color: whitesmoke;
     color: #333; 
-    padding: 15px;
+    padding: 10px;
     border-top: 1px solid #dee2e6;
 }
 

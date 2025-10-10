@@ -106,8 +106,6 @@ async function fetchCourses(){
 }
 
 
-fetchStudents().then(console.log)
-
 
 // Fetch Sessions
 
@@ -118,6 +116,7 @@ async function fetchSessions(){
         if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
         const sessions = await response.json()
         return sessions.sessions;
+
     }
     catch (error) {
         console.error("Error fetching sessions:", error);
@@ -135,13 +134,30 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 async function createStudentsTable(){
-    const table = document.getElementById("students");
+    console.log("createStudentsTable function called");
+    const tableBody = document.getElementById("students");
+    console.log("Table body element:", tableBody);
+    
+    if (!tableBody) {
+        console.error("Table body element not found!");
+        return;
+    }
+    
     try {
+        console.log("Fetching students...");
         const students = await fetchStudents();
-        console.log(students)
+        console.log("Students data:", students);
+        console.log("Number of students:", students.length);
+        
+        if (!students || students.length === 0) {
+            console.log("No students data available");
+            tableBody.innerHTML = `<tr><td colspan="4">No students found.</td></tr>`;
+            return;
+        }
+        
         const rowsHtml = students.map(student  => {
-
-        return `
+            console.log("Processing student:", student);
+            return `
                 <tr>
                     <td>${student.fullName}</td>
                     <td>${student.studentId}</td>
@@ -154,10 +170,12 @@ async function createStudentsTable(){
             `;
         }).join('');
 
-        table.innerHTML = rowsHtml;
+        console.log("Generated HTML:", rowsHtml);
+        tableBody.innerHTML = rowsHtml;
+        console.log("Table updated successfully");
     } catch (error) {
         console.error("Failed to fetch or create students table:", error);
-        tableBody.innerHTML = `<tr><td colspan="4">Error loading data.</td></tr>`;
+        tableBody.innerHTML = `<tr><td colspan="4">Error loading data: ${error.message}</td></tr>`;
     }
     };
 
