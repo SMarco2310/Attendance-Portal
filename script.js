@@ -78,10 +78,122 @@ function validatePassword(){
 
 
 
+// JSON API functions
+
+
+// async function fetchStudents(){
+//     try {
+//         console.log("Fetching students from API...");
+//         const response = await fetch("http://169.239.251.102:341/~marc.sossou/api/students.json");
+//         console.log("Response status:", response.status);
+//         if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+//         const data = await response.json();
+//         console.log("Raw data received:", data);
+//         return data.students;
+//     } catch (error) {
+//         console.error("Error fetching students:", error);
+//         console.error("Error details:", error.message);
+//         console.error("Make sure the proxy server is running: node proxy-server.js");
+//         return [];
+//     }
+// }
+
+
+
+// async function fetchCourses(){
+//     try {
+//         console.log("Fetching courses from API...");
+//         const response = await fetch("http://169.239.251.102:341/~marc.sossou/api/courses.json");
+//         console.log("Courses response status:", response.status);
+//         if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+//         const data = await response.json();
+//         console.log("Courses data received:", data);
+//         return data.courses;
+//     }
+//     catch (error) {
+//         console.error("Error fetching courses:", error);
+//         console.error("Error details:", error.message);
+//         console.error("Make sure the proxy server is running: node proxy-server.js");
+//         return [];
+//     }
+// }
+
+
+// async function fetchSessions(){
+    
+//     try {
+//         console.log("Fetching sessions from API...");
+//         const response = await fetch("http://169.239.251.102:341/~marc.sossou/api/sessions.json");
+//         console.log("Sessions response status:", response.status);
+//         if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+//         const sessions = await response.json()
+//         return sessions.sessions;
+
+//     }
+//     catch (error) {
+//         console.error("Error fetching sessions:", error);
+//         console.error("Make sure the proxy server is running: node proxy-server.js");
+//         return [];
+//     }
+// }
+
+
+
+
+// document.addEventListener("DOMContentLoaded", createStudentsTable);
+
+
+// async function createStudentsTable(){
+
+//     console.log("createStudentsTable function called");
+//     const tableBody = document.getElementById("students");
+//     console.log("Table body element:", tableBody);
+    
+//     if (!tableBody) {
+//         console.error("Table body element not found!");
+//         return;
+//     }
+
+//     try {
+//         console.log("Fetching students...");
+//         const students = await fetchStudents();
+//         console.log("Fetched students:", students);
+
+//         if (!students || students.length === 0) {
+//             tableBody.innerHTML = `<tr><td colspan="4">No students found.</td></tr>`;
+//             return;
+//         }
+
+//         const rowsHtml = students.map(student  => {
+//             return `
+//                 <tr>
+//                     <td>${student.fullName}</td>
+//                     <td>${student.studentId}</td>
+//                     <td>${student.major}</td>
+//                     <td>
+//                         <input type="range" name="attendance" min="0" max="100" value="${student.attendance}">
+//                         <span>${student.attendance}%</span>
+//                     </td>
+//                 </tr>
+//             `;
+//         }).join('');
+
+//         console.log("Generated HTML:", rowsHtml);
+//         tableBody.innerHTML = rowsHtml;
+//         console.log("Table updated successfully");
+//     } catch (error) {
+//         console.error("Failed to fetch or create students table:", error);
+
+//         tableBody.innerHTML = `<tr><td colspan="4">Error loading data: ${error.message}</td></tr>`;
+
+//     }
+// };
+
 async function fetchStudents(){
     try {
         console.log("Fetching students from API...");
-        const response = await fetch("http://localhost:3000/students");
+        const response = await fetch("http://169.239.251.102:341/~marc.sossou/api/students.json");
+        // const response = await fetch("http://localhost:5500/students.json");
         console.log("Response status:", response.status);
         if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
         const data = await response.json();
@@ -95,19 +207,18 @@ async function fetchStudents(){
     }
 }
 
-
-
 async function fetchCourses(){
     try {
         console.log("Fetching courses from API...");
-        const response = await fetch("http://localhost:3000/courses");
+        const response = await fetch("http://169.239.251.102:341/~marc.sossou/api/courses.json");
+        // const response = await fetch("http://localhost:5500/courses.json");
+
         console.log("Courses response status:", response.status);
         if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
         const data = await response.json();
         console.log("Courses data received:", data);
         return data.courses;
-    }
-    catch (error) {
+    } catch (error) {
         console.error("Error fetching courses:", error);
         console.error("Error details:", error.message);
         console.error("Make sure the proxy server is running: node proxy-server.js");
@@ -115,51 +226,41 @@ async function fetchCourses(){
     }
 }
 
-
-<<<<<<< HEAD
-
-// Fetch Sessions
-=======
->>>>>>> bdb2bf58d24931488ded1b98a4d31f8b963b8aa9
-
 async function fetchSessions(){
-    
     try {
         console.log("Fetching sessions from API...");
-        const response = await fetch("http://localhost:3000/sessions");
+        const response = await fetch("http://169.239.251.102:341/~marc.sossou/api/sessions.json");
+        // const response = await fetch("http://localhost:5500/sessions.json");
         console.log("Sessions response status:", response.status);
         if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
-<<<<<<< HEAD
-        const sessions = await response.json()
-        return sessions.sessions;
-
-=======
         const data = await response.json();
-        console.log("Sessions data received:", data);
         return data.sessions;
->>>>>>> bdb2bf58d24931488ded1b98a4d31f8b963b8aa9
-    }
-    catch (error) {
+    } catch (error) {
         console.error("Error fetching sessions:", error);
-        console.error("Error details:", error.message);
         console.error("Make sure the proxy server is running: node proxy-server.js");
         return [];
     }
 }
 
-
-
-
-
-if (document.readyState === 'loading') {
-    document.addEventListener("DOMContentLoaded", createStudentsTable);
-} else {
-    createStudentsTable();
+// Add event listener for attendance slider updates
+function setupAttendanceSliders() {
+    const sliders = document.querySelectorAll('input[name="attendance"]');
+    sliders.forEach(slider => {
+        slider.addEventListener('input', function() {
+            const span = this.nextElementSibling;
+            if (span) {
+                span.textContent = `${this.value}%`;
+            }
+        });
+    });
 }
 
+document.addEventListener("DOMContentLoaded", function() {
+    createStudentsTable();
+    addCoursesOptions();
+});
 
 async function createStudentsTable(){
-<<<<<<< HEAD
     console.log("createStudentsTable function called");
     const tableBody = document.getElementById("students");
     console.log("Table body element:", tableBody);
@@ -168,48 +269,25 @@ async function createStudentsTable(){
         console.error("Table body element not found!");
         return;
     }
-    
-=======
-    const table = document.getElementById("students");
-    if (!table) {
-        console.error("Table element not found");
-        return;
-    }
 
->>>>>>> bdb2bf58d24931488ded1b98a4d31f8b963b8aa9
     try {
         console.log("Fetching students...");
         const students = await fetchStudents();
-<<<<<<< HEAD
-        console.log("Students data:", students);
-        console.log("Number of students:", students.length);
-        
-        if (!students || students.length === 0) {
-            console.log("No students data available");
-            tableBody.innerHTML = `<tr><td colspan="4">No students found.</td></tr>`;
-            return;
-        }
-        
-        const rowsHtml = students.map(student  => {
-            console.log("Processing student:", student);
-=======
         console.log("Fetched students:", students);
 
         if (!students || students.length === 0) {
-            table.innerHTML = `<tr><td colspan="4">No students found.</td></tr>`;
+            tableBody.innerHTML = `<tr><td colspan="4">No students found.</td></tr>`;
             return;
         }
 
-        const rowsHtml = students.map(student  => {
->>>>>>> bdb2bf58d24931488ded1b98a4d31f8b963b8aa9
+        const rowsHtml = students.map(student => {
             return `
                 <tr>
                     <td>${student.fullName}</td>
                     <td>${student.studentId}</td>
                     <td>${student.major}</td>
                     <td>
-                        <input type="range" name="attendance" min="0" max="100" value="${student.attendance}">
-                        <span>${student.attendance}%</span>
+                        <input type="range" name="attendance" min="0" max="100" value="${student.attendance}" disabled><span>${student.attendance}%</span>
                     </td>
                 </tr>
             `;
@@ -217,16 +295,63 @@ async function createStudentsTable(){
 
         console.log("Generated HTML:", rowsHtml);
         tableBody.innerHTML = rowsHtml;
+        
+        // Setup slider event listeners after DOM is updated
+        setupAttendanceSliders();
+        
         console.log("Table updated successfully");
     } catch (error) {
         console.error("Failed to fetch or create students table:", error);
-<<<<<<< HEAD
         tableBody.innerHTML = `<tr><td colspan="4">Error loading data: ${error.message}</td></tr>`;
-=======
-        table.innerHTML = `<tr><td colspan="4">Error loading data: ${error.message}</td></tr>`;
->>>>>>> bdb2bf58d24931488ded1b98a4d31f8b963b8aa9
     }
-};
+}
+
+
+async function addCoursesOptions(){
+    const courseSelect = document.getElementById("course-field");
+    
+    if (!courseSelect) {
+        console.error("Course select element not found!");
+        return;
+    }
+
+    try {
+        console.log("Fetching courses for dropdown...");
+        const courses = await fetchCourses();
+        console.log("Fetched courses:", courses);
+
+        // Clear existing options except the first one
+        courseSelect.innerHTML = '<option value="">Course</option>';
+
+        if (!courses || courses.length === 0) {
+            const option = document.createElement('option');
+            option.value = '';
+            option.textContent = 'No courses available';
+            courseSelect.appendChild(option);
+            return;
+        }
+
+        // Add course options
+        courses.forEach(course => {
+            const option = document.createElement('option');
+            option.value = course.courseId || course.id;
+            option.textContent = course.courseName || course.name;
+            courseSelect.appendChild(option);
+        });
+
+        console.log("Course options added successfully");
+    } catch (error) {
+        console.error("Failed to fetch courses for dropdown:", error);
+        
+        // Add error option
+        const option = document.createElement('option');
+        option.value = '';
+        option.textContent = 'Error loading courses';
+        courseSelect.appendChild(option);
+    }
+}
+
+async 
 
 
 

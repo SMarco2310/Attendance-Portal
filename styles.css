@@ -22,8 +22,9 @@ table{
 table th{
     background-color: #f8f9fa;
     color: #6c757d;           
-    padding: 10px;             
-    text-align: left;          
+    padding: 20px;             
+    text-align: left;  
+    height: 35px;        
     font-weight: normal;      
     font-family: sans-serif;
 
