@@ -116,11 +116,8 @@ async function fetchCourses(){
 }
 
 
-<<<<<<< HEAD
 
 // Fetch Sessions
-=======
->>>>>>> bdb2bf58d24931488ded1b98a4d31f8b963b8aa9
 
 async function fetchSessions(){
     
@@ -129,15 +126,9 @@ async function fetchSessions(){
         const response = await fetch("http://localhost:3000/sessions");
         console.log("Sessions response status:", response.status);
         if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
-<<<<<<< HEAD
-        const sessions = await response.json()
-        return sessions.sessions;
-
-=======
         const data = await response.json();
         console.log("Sessions data received:", data);
         return data.sessions;
->>>>>>> bdb2bf58d24931488ded1b98a4d31f8b963b8aa9
     }
     catch (error) {
         console.error("Error fetching sessions:", error);
@@ -159,7 +150,6 @@ if (document.readyState === 'loading') {
 
 
 async function createStudentsTable(){
-<<<<<<< HEAD
     console.log("createStudentsTable function called");
     const tableBody = document.getElementById("students");
     console.log("Table body element:", tableBody);
@@ -169,18 +159,15 @@ async function createStudentsTable(){
         return;
     }
     
-=======
     const table = document.getElementById("students");
     if (!table) {
         console.error("Table element not found");
         return;
     }
 
->>>>>>> bdb2bf58d24931488ded1b98a4d31f8b963b8aa9
     try {
         console.log("Fetching students...");
         const students = await fetchStudents();
-<<<<<<< HEAD
         console.log("Students data:", students);
         console.log("Number of students:", students.length);
         
@@ -192,7 +179,6 @@ async function createStudentsTable(){
         
         const rowsHtml = students.map(student  => {
             console.log("Processing student:", student);
-=======
         console.log("Fetched students:", students);
 
         if (!students || students.length === 0) {
@@ -201,7 +187,6 @@ async function createStudentsTable(){
         }
 
         const rowsHtml = students.map(student  => {
->>>>>>> bdb2bf58d24931488ded1b98a4d31f8b963b8aa9
             return `
                 <tr>
                     <td>${student.fullName}</td>
@@ -220,11 +205,8 @@ async function createStudentsTable(){
         console.log("Table updated successfully");
     } catch (error) {
         console.error("Failed to fetch or create students table:", error);
-<<<<<<< HEAD
         tableBody.innerHTML = `<tr><td colspan="4">Error loading data: ${error.message}</td></tr>`;
-=======
         table.innerHTML = `<tr><td colspan="4">Error loading data: ${error.message}</td></tr>`;
->>>>>>> bdb2bf58d24931488ded1b98a4d31f8b963b8aa9
     }
 };
 
